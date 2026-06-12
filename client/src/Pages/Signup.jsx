@@ -1,4 +1,32 @@
 const Signup = () => {
+  // 1. Setup unified state for all form fields
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    username: '',
+    email: '',
+    phone: '',
+    dob: '',
+    gender: '',
+    password: '',
+    confirmPassword: ''
+  });
+  // States to manage loading status, errors, and success feedback
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  // 2. Handle input changes dynamically based on the input's "name" attribute
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+  // 3. Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setSuccess('');
   return (
     <>
       <div className="flex min-h-screen items-center justify-center bg-slate-50 font-sans p-4 md:p-8">
